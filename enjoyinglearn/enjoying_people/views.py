@@ -3,8 +3,8 @@ from django.shortcuts import render
 
 
 def index(request):
-    if request.GET:
-        print(request.GET)
+    if request.POST:
+        print(request.POST)
 
     return HttpResponse('Страница приложения enjoying_people.')
 
