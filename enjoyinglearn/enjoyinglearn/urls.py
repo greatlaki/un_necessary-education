@@ -24,3 +24,4 @@ urlpatterns = [
     path('', include('enjoying_people.urls')),
 ]
 
+handler404 = pageNotFound
