@@ -6,5 +6,5 @@ def index(request):
     return HttpResponse('Страница приложения enjoying_people.')
 
 
-def categories(request):
-    return HttpResponse("<h1>Статьи по категориям</h1>")
+def categories(request, catid):
+    return HttpResponse(f"<h1>Статьи по категориям</h1><p>{catid}</p>")
