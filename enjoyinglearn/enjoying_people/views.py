@@ -5,6 +5,7 @@ from .models import *
 
 menu = ["О сайте", "Добавить статью", "Обратная связь", "Войти"]
 
+
 def index(request):
     posts = People.objects.all()
     return render(request, 'enjoying_people/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
