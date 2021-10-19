@@ -5,13 +5,13 @@ from .models import *
 
 
 def index(request):
-    if request.POST:
-        print(request.POST)
-
-    return HttpResponse('Страница приложения enjoying_people.')
+    return render(request, 'enjoying_people/index.html')
 
 
 def categories(request, catid):
+    if request.POST:
+        print(request.POST)
+
     return HttpResponse(f"<h1>Статьи по категориям</h1><p>{catid}</p>")
 
 
