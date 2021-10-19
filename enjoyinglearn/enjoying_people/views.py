@@ -8,6 +8,10 @@ def index(request):
     return render(request, 'enjoying_people/index.html')
 
 
+def about(request):
+    return render(request, 'enjoying_people/about.html')
+
+
 def categories(request, catid):
     if request.POST:
         print(request.POST)
