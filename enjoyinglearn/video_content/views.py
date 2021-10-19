@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 
 from .models import *
 
+
 def upload_video(request):
     if request.method == 'POST':
         title = request.POST['title']

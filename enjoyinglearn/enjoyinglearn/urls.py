@@ -21,6 +21,7 @@ from django.urls import path
 
 from django.conf import settings
 from enjoying_people.views import *
+from video_content.views import *
 from django.urls import path, include
 
 urlpatterns = [
