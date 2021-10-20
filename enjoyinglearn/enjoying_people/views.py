@@ -48,8 +48,19 @@ def show_post(request, post_id):
     return HttpResponse(f'Отображение статьи с id = {post_id}')
 
 
-def show_category(request, cad_id):
-    return HttpResponse(f'Отображение категории с id = {cad_id}')
+def show_category(request, cat_id):
+    posts = People.objects.filter(cat_id=cat_id)
+    cats = Category.objects.all()
+
+    context = {
+        'posts': posts,
+        'cats': cats,
+        'menu': menu,
+        'title': 'Отображение по рубрикам',
+        'cat_selected': cat_id,
+    }
+
+    return render(request, 'enjoying_people/index.html', context=context)
 
 
 
