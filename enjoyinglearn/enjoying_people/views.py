@@ -78,20 +78,10 @@ class PeopleCategory(ListView):
     def get_queryset(self):
         return People.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
 
-# def show_category(request, cat_id):
-#     posts = People.objects.filter(cat_id=cat_id)
-#
-#     if len(posts) == 0:
-#         raise Http404
-#
-#     context = {
-#         'posts': posts,
-#         'menu': menu,
-#         'title': 'Отображение по рубрикам',
-#         'cat_selected': cat_id,
-#     }
-#
-#     return render(request, 'enjoying_people/index.html', context=context)
-#
-
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Категория - ' + str(context['posts'][0].cat)
+        context['menu'] = menu
+        context['cat_selected'] = context['posts'][0].cat_id
+        return context
 
