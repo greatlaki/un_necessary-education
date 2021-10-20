@@ -12,7 +12,13 @@ menu = [{"title": "О сайте", "url_name": 'about'},
 
 def index(request):
     posts = People.objects.all()
-    return render(request, 'enjoying_people/index.html', {'posts': posts, 'menu': menu, 'title': 'Главная страница'})
+    context = {
+        'posts': posts,
+        'menu': menu,
+        'title': 'Главная страница',
+    }
+
+    return render(request, 'enjoying_people/index.html', context=context)
 
 
 def about(request):
