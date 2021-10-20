@@ -13,7 +13,8 @@ class CategoryAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
     list_display_links = ('id', 'name')
     search_fields = ('name',)
-    list_editable = ('is_published')
+    list_editable = ('is_published',)
+    list_filter = ('is_published', 'time_create')
 
 
 admin.site.register(People, PeopleAdmin)
