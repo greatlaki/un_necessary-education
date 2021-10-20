@@ -5,9 +5,11 @@ register = template.Library()
 
 
 @register.simple_tag(name='getcats')
-def get_categories():
-    return Category.objects.all()
-
+def get_categories(filter=None):
+    if not filter:
+        return Category.objects.all()
+    else:
+        return Category.objects.filter(pk=filter)
 
 @register.inclusion_tag('enjoying_people/list_categories.html')
 def show_categories():
