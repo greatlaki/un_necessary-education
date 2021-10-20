@@ -16,7 +16,19 @@ def index(request):
 
 
 def about(request):
-    return render(request, 'enjoying_people/about.html')
+    return render(request, 'enjoying_people/about.html', {'menu': menu, 'title': 'О сайте'})
+
+
+def add_page(request):
+    return HttpResponse('Добавление статьи')
+
+
+def contact(request):
+    return HttpResponse('Обратная связь')
+
+
+def login(request):
+    return HttpResponse('Авторизация')
 
 
 def pageNotFound(request, exception):
