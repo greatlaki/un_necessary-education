@@ -18,9 +18,9 @@ class People(models.Model):
         return reverse('post', kwargs={'post_id': self.pk})
 
     class Meta:
-        verbose_name = 'Люди'
-        verbose_plural = 'Люди'
-        ordering =['time_create', 'title']
+        verbose_name = 'Люди' # Нужно переименовать
+        verbose_plural = 'Люди' # Нужно переименовать
+        ordering = ['time_create', 'title']
 
 
 class Category(models.Model):
