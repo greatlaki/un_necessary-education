@@ -13,7 +13,7 @@ class People(models.Model):
     def __str__(self):
         return self.title
 
-    def get_absolute_url(self):
+    def get_absolute_url(self): # Отображение элемента базы данных
         return reverse('post', kwargs={'post_id': self.pk})
 
 
