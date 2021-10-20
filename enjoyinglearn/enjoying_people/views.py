@@ -12,10 +12,13 @@ menu = [{"title": "О сайте", "url_name": 'about'},
 
 def index(request):
     posts = People.objects.all()
+    cats = Category.objects.all()
     context = {
         'posts': posts,
+        'cats': cats,
         'menu': menu,
         'title': 'Главная страница',
+        'cat_selected': 0,          # Отображаюся все категории, пожтому "0"
     }
 
     return render(request, 'enjoying_people/index.html', context=context)
@@ -43,5 +46,10 @@ def pageNotFound(request, exception):
 
 def show_post(request, post_id):
     return HttpResponse(f'Отображение статьи с id = {post_id}')
+
+
+def show_category(request, cad_id):
+    return HttpResponse(f'Отображение категории с id = {cad_id}')
+
 
 
