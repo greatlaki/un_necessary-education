@@ -56,6 +56,7 @@ def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
+
 def show_post(request, post_slug):
     post = get_object_or_404(People, slug=post_slug)
 
@@ -69,20 +70,28 @@ def show_post(request, post_slug):
     return render(request, 'enjoying_people/post.html', context=context)
 
 
-def show_category(request, cat_id):
-    posts = People.objects.filter(cat_id=cat_id)
+class PeopleCategory(ListView):
+    model = People
+    template_name = 'enjoying_people/index.html'
+    context_object_name = 'posts'
 
-    if len(posts) == 0:
-        raise Http404
+    def get_queryset(self):
+        return People.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
 
-    context = {
-        'posts': posts,
-        'menu': menu,
-        'title': 'Отображение по рубрикам',
-        'cat_selected': cat_id,
-    }
-
-    return render(request, 'enjoying_people/index.html', context=context)
-
+# def show_category(request, cat_id):
+#     posts = People.objects.filter(cat_id=cat_id)
+#
+#     if len(posts) == 0:
+#         raise Http404
+#
+#     context = {
+#         'posts': posts,
+#         'menu': menu,
+#         'title': 'Отображение по рубрикам',
+#         'cat_selected': cat_id,
+#     }
+#
+#     return render(request, 'enjoying_people/index.html', context=context)
+#
 
 
