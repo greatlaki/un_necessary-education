@@ -32,12 +32,8 @@ def add_page(request):
     if request.method == "POST":
         form = AddPostForm(request.POST)
         if form.is_valid():
-            try:
-                form.save()
-                return redirect('home')
-            except:
-                form.add_error(None, 'Ошибка добавления поста')
-
+            form.save()
+            return redirect('home')
     else:
         form = AddPostForm()
     return render(request, 'enjoying_people/addpage.html', {"form": form, "menu": menu, 'title': "Добавить пост"})
