@@ -11,7 +11,6 @@ class People(models.Model):
     is_published = models.BooleanField(default=True)
     cat = models.ForeignKey('Category', on_delete=models.PROTECT)
 
-
     def __str__(self):
         return self.title
 
