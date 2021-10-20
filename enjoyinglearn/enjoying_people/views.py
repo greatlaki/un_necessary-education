@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, CreateView
 
 
 from .models import *
@@ -33,15 +33,15 @@ def about(request):
     return render(request, 'enjoying_people/about.html', {'menu': menu, 'title': 'О сайте'})
 
 
-def add_page(request):
-    if request.method == "POST":
-        form = AddPostForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('home')
-    else:
-        form = AddPostForm()
-    return render(request, 'enjoying_people/addpage.html', {"form": form, "menu": menu, 'title': "Добавить пост"})
+class AddPage(CreateView):
+    form_class = AddPostForm
+    template_name = 'enjoying_people/addpage.html'
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Добавление статьи'
+        context['menu'] = menu
+        return context
 
 
 def contact(request):
@@ -67,19 +67,6 @@ class ShowPost(DetailView):
         context['title'] = context['post']
         context['menu'] = menu
         return context
-
-
-# def show_post(request, post_slug):
-#     post = get_object_or_404(People, slug=post_slug)
-#
-#     context = {
-#         'post': post,
-#         'menu': menu,
-#         'title': post.title,
-#         'cat_selected': post.cat_id,
-#     }
-#
-#     return render(request, 'enjoying_people/post.html', context=context)
 
 
 class PeopleCategory(ListView):
