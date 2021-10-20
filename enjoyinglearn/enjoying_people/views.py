@@ -74,6 +74,7 @@ class PeopleCategory(ListView):
     model = People
     template_name = 'enjoying_people/index.html'
     context_object_name = 'posts'
+    allow_empty = False
 
     def get_queryset(self):
         return People.objects.filter(cat__slug=self.kwargs['cat_slug'], is_published=True)
