@@ -18,24 +18,15 @@ class PeopleHome(ListView):
     template_name = 'enjoying_people/index.html'
     context_object_name = 'posts'
 
-
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
         context['menu'] = {'title': 'Главная страница'}
+        context['cat_selected'] = 0
         return context
 
-# def index(request):
-#     posts = People.objects.all()
-#
-#     context = {
-#         'posts': posts,
-#         'menu': menu,
-#         'title': 'Главная страница',
-#         'cat_selected': 0,          # Отображаюся все категории, пожтому "0"
-#     }
-#
-#     return render(request, 'enjoying_people/index.html', context=context)
+    def get_queryset(self):
+        return People.objects.filter(is_publiched=True)
 
 
 def about(request):
