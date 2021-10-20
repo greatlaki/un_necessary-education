@@ -13,6 +13,7 @@ menu = [{"title": "О сайте", "url_name": 'about'},
 def index(request):
     posts = People.objects.all()
     cats = Category.objects.all()
+
     context = {
         'posts': posts,
         'cats': cats,
