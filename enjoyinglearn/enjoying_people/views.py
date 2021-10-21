@@ -3,14 +3,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
 
-
-from .models import *
 from .forms import *
+from .models import *
 
-menu = [{"title": "О сайте", "url_name": 'about'},
-        {"title": "Добавить статью", "url_name": 'add_page'},
-        {"title": "Обратная связь", "url_name": 'contact'},
-        {"title": "Войти", "url_name": 'login'}
+menu = [{'title': 'О сайте', 'url_name': 'about'},
+        {'title': 'Добавить статью', 'url_name': 'add_page'},
+        {'title': 'Обратная связь', 'url_name': 'contact'},
+        {'title': 'Войти', 'url_name': 'login'},
 ]
 
 
@@ -22,7 +21,7 @@ class PeopleHome(ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
         context['menu'] = menu
-        context['menu'] = 'Главная страница'
+        context['title'] = 'Главная страница'
         context['cat_selected'] = 0
         return context
 
