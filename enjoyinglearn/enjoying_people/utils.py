@@ -12,7 +12,7 @@ menu = [{'title': 'О сайте', 'url_name': 'about'},
 class DataMixin:
         def get_user_context(self, **kwargs):
                 context = kwargs
-                cats = Category.objects.annotate(Count('enjoying_people'))
+                cats = Category.objects.annotate(Count('people'))
 
                 user_menu = menu.copy()
                 if not self.request.user.is_authenticated:

@@ -11,6 +11,7 @@ from .utils import *
 
 
 class PeopleHome(DataMixin, ListView):
+    paginate_by = 3
     model = People
     template_name = 'enjoying_people/index.html'
     context_object_name = 'posts'
