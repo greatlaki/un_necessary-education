@@ -66,6 +66,7 @@
 	<div class="content-text">
 {% block content %}
 {% endblock %}
+{% if page_obj.has_other_pages %}
 <nav class="list-pages">
 	<ul>
 		{% for p in paginator.page_range %}
@@ -79,7 +80,7 @@
 		{% endfor %}
 	</ul>
 </nav>>
-
+{% endif %}
 	</div>
 <!-- Конец блока контента -->
 
