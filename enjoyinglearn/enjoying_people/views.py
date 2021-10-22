@@ -33,7 +33,7 @@ class AddPage(LoginRequiredMixin, DataMixin, CreateView):
     template_name = 'enjoying_people/addpage.html'
     success_url = reverse_lazy('home')
     login_url = reverse_lazy('home')
-
+    raise_exception = True
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
