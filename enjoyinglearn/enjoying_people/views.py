@@ -26,16 +26,15 @@ def about(request):
     return render(request, 'enjoying_people/about.html', {'menu': menu, 'title': 'О сайте'})
 
 
-class AddPage(CreateView):
+class AddPage(DataMixin, CreateView):
     form_class = AddPostForm
     template_name = 'enjoying_people/addpage.html'
     success_url = reverse_lazy('home')
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Добавление статьи'
-        context['menu'] = menu
-        return context
+        c_def = self.get_user_context(title='Добавление статьи')
+        return dict(list(context.items()) + list(c_def.items()))
 
 
 def contact(request):
@@ -50,7 +49,8 @@ def pageNotFound(request, exception):
     return HttpResponseNotFound('<h1>Страница не найдена</h1>')
 
 
-class ShowPost(DetailView):
+
+class ShowPost(DataMixin, DetailView):
     model = People
     template_name = 'enjoying_people/post.html'
     slug_url_kwarg = 'post_slug'
@@ -58,12 +58,11 @@ class ShowPost(DetailView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = context['post']
-        context['menu'] = menu
-        return context
+        c_def = self.get_user_context(title=context['post'])
+        return dict(list(context.items()) + list(c_def.items()))
 
 
-class PeopleCategory(ListView):
+class PeopleCategory(DataMixin, ListView):
     model = People
     template_name = 'enjoying_people/index.html'
     context_object_name = 'posts'
@@ -74,8 +73,7 @@ class PeopleCategory(ListView):
 
     def get_context_data(self, *, object_list=None, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['title'] = 'Категория - ' + str(context['posts'][0].cat)
-        context['menu'] = menu
-        context['cat_selected'] = context['posts'][0].cat_id
-        return context
+        c_def = self.get_user_context(title='Категория - ' + str(context['posts'][0].cat),
+                                      cat_selected=context['posts'])
+        return dict(list(context.items()) + list(c_def.items()))
 
