@@ -1,4 +1,3 @@
-from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
@@ -84,7 +83,7 @@ class PeopleCategory(DataMixin, ListView):
 
 
 class RegisterUser(DataMixin, CreateView):
-    form_class =  UserCreationForm
+    form_class = RegisterUserForm
     template_name = 'enjoying_people/register.html'
     success_url = reverse_lazy('login')
 
