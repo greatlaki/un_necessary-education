@@ -21,7 +21,7 @@ class People(models.Model):
     class Meta:
         verbose_name = 'Люди' # Нужно переименовать
         verbose_name_plural = 'Люди' # Нужно переименовать
-        ordering = ['time_create', 'title']
+        ordering = ['id']
 
 
 class Category(models.Model):
