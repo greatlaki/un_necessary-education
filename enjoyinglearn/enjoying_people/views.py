@@ -2,6 +2,8 @@ from django.http import HttpResponse, HttpResponseNotFound, Http404
 from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 
 from .forms import *
 from .models import *
@@ -26,7 +28,7 @@ def about(request):
     return render(request, 'enjoying_people/about.html', {'menu': menu, 'title': 'О сайте'})
 
 
-class AddPage(DataMixin, CreateView):
+class AddPage(LoginRequiredMixin, DataMixin, CreateView):
     form_class = AddPostForm
     template_name = 'enjoying_people/addpage.html'
     success_url = reverse_lazy('home')
