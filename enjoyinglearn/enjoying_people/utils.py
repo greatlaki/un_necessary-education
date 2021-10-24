@@ -14,10 +14,10 @@ class DataMixin:
 
         def get_user_context(self, **kwargs):
                 context = kwargs
-                cats = cache.get('cats')
-                if not cats:
-                        cats = Category.objects.annotate(Count('people'))
-                        cache.set('cats', cats, 60)
+                # cats = cache.get('cats')
+                # if not cats:
+                cats = Category.objects.annotate(Count('people'))
+                        # cache.set('cats', cats, 60)
 
                 user_menu = menu.copy()
                 if not self.request.user.is_authenticated:
