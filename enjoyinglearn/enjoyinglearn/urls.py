@@ -29,6 +29,7 @@ urlpatterns = [
     path('', include('enjoying_people.urls')),
     path('upload/', upload_video, name='upload'),
     path('videos/', display, name='videos'),
+    path('captcha', include('captcha.urls')),
 ]
 
 if settings.DEBUG:

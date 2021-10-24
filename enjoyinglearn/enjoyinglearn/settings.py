@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'captcha',
     'debug_toolbar',
     'enjoying_people.apps.EnjoyingPeopleConfig',
     'video_content.apps.VideoContentConfig',
