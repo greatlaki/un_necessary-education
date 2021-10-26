@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+{% extends 'enjoying_people/base.html' %}
+
+{% block content %}
+<h1>{{title}}</h1>
 
     <form action="" method="POST">{% csrf_token %}
 
@@ -9,8 +10,10 @@
     <button type="submit"> Upload New Video </button>
 
     </form>
-</head>
-<body>
 
-</body>
-</html>
+{% endblock %}
+
+
+
+
+

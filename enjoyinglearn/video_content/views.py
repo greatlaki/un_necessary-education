@@ -1,6 +1,6 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import redirect, render
 
-from .models import *
+from video_content.models import *
 
 
 def upload_video(request):
@@ -12,7 +12,7 @@ def upload_video(request):
         content.save()
         return redirect('home')
 
-    return render(request, 'upload.html')
+    return render(request, 'video_content/upload.html')
 
 
 def display(request):
@@ -21,4 +21,4 @@ def display(request):
         'videos': videos,
     }
 
-    return render(request, 'videos.html', context)
+    return render(request, 'video_content/videos.html', context)
