@@ -27,8 +27,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('enjoying_people.urls')),
-    path('upload/', upload_video, name='upload'),
-    path('videos/', display, name='videos'),
+    path('', include('video_content.urls')),
     path('captcha', include('captcha.urls')),
 ]
 
