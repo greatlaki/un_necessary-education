@@ -9,6 +9,7 @@ class Post(models.Model):
 
     class Meta:
         ordering = ['created']
+<<<<<<< HEAD
 
 
 class Comment(models.Model):
@@ -28,3 +29,5 @@ class Category(models.Model):
 
     class Meta:
         verbose_name_plural = 'categories'
+=======
+>>>>>>> 486f0bf1ce377e7dad72b38805ba98ebcd3d5a82
