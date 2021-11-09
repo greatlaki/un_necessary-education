@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 from rest_framework import generics, permissions
 from django.contrib.auth.models import User
 from .permisisions import IsOwnerOrReadOnly
@@ -6,11 +5,9 @@ from .serializers import PostSerializer
 
 from .models import *
 from . import serializers
-=======
 from rest_framework import generics
 from . import serializers
 from django.contrib.auth.models import User
->>>>>>> 486f0bf1ce377e7dad72b38805ba98ebcd3d5a82
 
 
 class UserList(generics.ListAPIView):
@@ -21,7 +18,6 @@ class UserList(generics.ListAPIView):
 class UserDetail(generics.RetrieveAPIView):
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
-<<<<<<< HEAD
 
 
 class PostList(generics.ListCreateAPIView):
@@ -70,5 +66,4 @@ class CategoryDetail(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = serializers.PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly,
                           IsOwnerOrReadOnly]
-=======
->>>>>>> 486f0bf1ce377e7dad72b38805ba98ebcd3d5a82
+
